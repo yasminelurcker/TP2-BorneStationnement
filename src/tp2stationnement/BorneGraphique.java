@@ -36,6 +36,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+
 public class BorneGraphique extends JFrame {
     
     private Color fond = new Color ( 30,152,196, 255);
@@ -496,11 +497,10 @@ public class BorneGraphique extends JFrame {
                 itemZone4_actionPerformed(e);
             }
         });
-    boutonEncaisser.addActionListener(new ActionListener()
-        {
+    boutonEncaisser.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e)
           {
-            boutonEncaisser_actionPerformed(e);
+            //boutonEncaisser_actionPerformed(e);
           }
         });
     Component[] tab = panelClavier.getComponents();
@@ -546,23 +546,26 @@ public class BorneGraphique extends JFrame {
     private void champDateExp_actionPerformed(ActionEvent e) {
         String numeroCarte = champNumeroCarte.getText();
         String dateExpiration = champDateExp.getText();
-       
+        //boucle attend une date valide
+        GregorianCalendar expiration = new GregorianCalendar();
+    	CarteDeCredit uneCarte = new CarteDeCredit(numeroCarte, expiration);  // CELUi ENTRER PAR LE USER
+    	this.laBorne.traiterCarte(uneCarte);
     }
 
     private void bouton25Credit_actionPerformed(ActionEvent e) {
     	
-    	CarteDeCredit uneCarte = new CarteDeCredit(champNumeroCarte, expiration);
-    			
-    			this.champNumeroCarte = uneCarte.getNumeroCarte();
-    			this.champDateExp = uneCarte.getExpiration());
+  //  	this.laBorne.carteCourante;
+    	this.laBorne.carteCourante.getNumeroCarte();
+    	//this.champNumeroCarte = this.laBorne.carteCourante.getNumeroCarte();
+    	//this.champDateExp = this.laBorne.carteCourante.getExpiration());
     	//Piece unePiece = new Piece(0.25);
-    	this.champMessage.setText(this.laBorne.traiterCarte(uneCarte));
+    	this.champMessage.setText(this.laBorne.carteCourante.getNumeroCarte());
     }
 
     private void boutonMaxCredit_actionPerformed(ActionEvent e) {
 
     //Piece unePiece = new Piece((laBorne.CalculerTarif(120)*100));
-    	this.champMessage.setText(this.laBorne.traiterCarte(uneCarte));
+    	this.champMessage.setText(this.laBorne.traiterCarte(this.laBorne.carteCourante));
 
     	
     }

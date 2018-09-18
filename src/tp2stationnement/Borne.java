@@ -15,7 +15,7 @@ public class Borne {
 		private Transaction transactionEnCours;
 		private double paiementEnCours;
 		private GregorianCalendar date ;
-		private CarteDeCredit carteCourante;
+		CarteDeCredit carteCourante;
 		private int nMinutes;
 		
 		

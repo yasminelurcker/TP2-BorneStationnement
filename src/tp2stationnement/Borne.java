@@ -15,10 +15,11 @@ public class Borne {
 		private Transaction transactionEnCours;
 		private double paiementEnCours;
 		private GregorianCalendar date ;
+		private CarteDeCredit carteCourante;
 		
 		
 		
-	public Borne (int zone, GregorianCalendar horaire) {
+	public Borne (int zone) {
 	
 				this.zone = zone;
 			}
@@ -76,7 +77,7 @@ public class Borne {
 			return false;
 	}
 
-	public void ajouterMonnaie(Piece valeur) {
+	public String ajouterMonnaie(Piece valeur) {
 		
 		double paiementEnCours = 0.00;
 		double paiementMaximum = 6.00;
@@ -91,11 +92,17 @@ public class Borne {
 			if (valeur.getValeur() == 2.00)
 				  this.paiementEnCours =+ 2.00;
 		}
+		return "Piece invalide";	
+	}
+	
+	public String traiterCarte(CarteDeCredit carte) {
+		
+		//Validation de la carte
 		
 		
-			
+		this.carteCourante = carte;
 		
-		
+		return "";
 	}
 }
 	

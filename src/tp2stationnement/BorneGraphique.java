@@ -543,16 +543,20 @@ public class BorneGraphique extends JFrame {
     }
 
     private void champDateExp_actionPerformed(ActionEvent e) {
-        //à coder
+        String numeroCarte = champNumeroCarte.getText();
+        String dateExpiration = champDateExp.getText();
        
     }
 
     private void bouton25Credit_actionPerformed(ActionEvent e) {
- 
+    	CarteDeCredit uneCarte = new CarteDeCredit();
+    	//Piece unePiece = new Piece(0.25);
+    	this.champMessage.setText(this.laBorne.traiterCarte(uneCarte));
     }
 
     private void boutonMaxCredit_actionPerformed(ActionEvent e) {
 
+    	
     }
 
     private void boutonA_actionPerformed(ActionEvent e) {

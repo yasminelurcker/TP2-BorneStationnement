@@ -16,4 +16,15 @@ public CarteDeCredit(String numeroCarte, GregorianCalendar expiration) {
 	}
 	
 	}
+
+public String getNumeroCarte() {
+	return numeroCarte;
 }
+
+
+public GregorianCalendar getExpiration() {
+	return expiration;
+}
+
+}
+

@@ -8,25 +8,23 @@ import java.util.GregorianCalendar;
 		// variables
 		private double montant;
 		private boolean carte;
-		//private boolean valide;
 		private String emplacement;
+		private int nMinutes;
 		GregorianCalendar heureDebut;
 		GregorianCalendar heureFin;
 		
 		
-		GregorianCalendar today = new GregorianCalendar();	
+		GregorianCalendar today = new GregorianCalendar();
+		private boolean valide;	
 			
 	
-		/*/ constructeur
-		public Transaction( GregorianCalendar heureDebut, String emplacement, boolean carte) {
-			
-				this.emplacement = emplacement;
-				this.heureDebut = heureDebut;
-				this.paiement(carte);	
-				}*/
+
 		
 		public Transaction(String emplacement) {
 			this.emplacement = emplacement;
+			this.nMinutes = 0;
+			this.montant = 0;
+			
 		}
 		
 		public void paiement(boolean carte) {
@@ -41,10 +39,74 @@ import java.util.GregorianCalendar;
 							
 				}
 				else {
-					// Paiment en pièces
 					
+					;
 				}
 			}
+
+		public double getMontant() {
+			return montant;
+		}
+
+		public void setMontant(double montant) {
+			this.montant = montant;
+		}
+
+		public boolean isCarte() {
+			return carte;
+		}
+
+		public void setCarte(boolean carte) {
+			this.carte = carte;
+		}
+
+		public String getEmplacement() {
+			return emplacement;
+		}
+
+		public void setEmplacement(String emplacement) {
+			this.emplacement = emplacement;
+		}
+
+		public int getnMinutes() {
+			return nMinutes;
+		}
+
+		public void setnMinutes(int nMinutes) {
+			this.nMinutes = nMinutes;
+		}
+
+		public GregorianCalendar getHeureDebut() {
+			return heureDebut;
+		}
+
+		public void setHeureDebut(GregorianCalendar heureDebut) {
+			this.heureDebut = heureDebut;
+		}
+
+		public GregorianCalendar getHeureFin() {
+			return heureFin;
+		}
+
+		public void setHeureFin(GregorianCalendar heureFin) {
+			this.heureFin = heureFin;
+		}
+
+		public GregorianCalendar getToday() {
+			return today;
+		}
+
+		public void setToday(GregorianCalendar today) {
+			this.today = today;
+		}
+
+		public boolean isValide() {
+			return valide;
+		}
+
+		public void setValide(boolean valide) {
+			this.valide = valide;
+		}
 		
 		
 		

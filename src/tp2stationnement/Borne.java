@@ -16,6 +16,7 @@ public class Borne {
 		private double paiementEnCours;
 		private GregorianCalendar date ;
 		private CarteDeCredit carteCourante;
+		private int nMinutes;
 		
 		
 		
@@ -23,6 +24,17 @@ public class Borne {
 	
 				this.zone = zone;
 			}
+	
+	public double ajouterTemps(double tempsEnMin) {
+		
+		return this.nMinutes +=tempsEnMin;
+		
+	}
+	public double ajouterMonnaie(double paiement)
+	{
+		double coutMinutes = zone/60;
+		return this.nMinutes * coutMinutes ;
+	}
 	
 	public void tarifParZone(String nuZone)		// tarif par heure d�termin� en fonction de la zone du stationnement 
 	
@@ -81,6 +93,9 @@ public class Borne {
 		
 		double paiementEnCours = 0.00;
 		double paiementMaximum = 6.00;
+		double coutMinute = zone/60; 
+		int nMinutes;
+		
 		
 		if (paiementEnCours <paiementMaximum)
 		{
@@ -96,50 +111,19 @@ public class Borne {
 	}
 	
 	public String traiterCarte(CarteDeCredit carte) {
-		
-		//Validation de la carte
-		
+	
+		GregorianCalendar dateExpiration = carte.getExpiration();		
 		
 		this.carteCourante = carte;
 		
-		return "";
+		return " ";
 	}
-}
-	
-	
-	
-	
-	
 
-/*
-	public boolean PaiementValide("$$$") { 
-		return true; 
-		
-	
+
+	public void setZone(int zone) {
+		this.zone = zone;
 	}
-	
-	public boolean PaiementValide(CarteDeCredit) { 
-		return true; 
-		
-	
-	}
-	// Re�oit le paiement cr�dit
-	// re�oit le paiement cash
-	//imprime la facture
-		
-		
-		
-	}
-	// Valide le paiement
-	
-// Imprime la facture
-// append('' all...\n + )
-// transaction.gettypepaiement +
-	
-	//v�rifie si en fct
-			
-			
-		;
-	
-	
-*/
+
+}
+
+

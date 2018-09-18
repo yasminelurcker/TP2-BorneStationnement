@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -549,12 +550,19 @@ public class BorneGraphique extends JFrame {
     }
 
     private void bouton25Credit_actionPerformed(ActionEvent e) {
-    	CarteDeCredit uneCarte = new CarteDeCredit();
+    	
+    	CarteDeCredit uneCarte = new CarteDeCredit(champNumeroCarte, expiration);
+    			
+    			this.champNumeroCarte = uneCarte.getNumeroCarte();
+    			this.champDateExp = uneCarte.getExpiration());
     	//Piece unePiece = new Piece(0.25);
     	this.champMessage.setText(this.laBorne.traiterCarte(uneCarte));
     }
 
     private void boutonMaxCredit_actionPerformed(ActionEvent e) {
+
+    //Piece unePiece = new Piece((laBorne.CalculerTarif(120)*100));
+    	this.champMessage.setText(this.laBorne.traiterCarte(uneCarte));
 
     	
     }
@@ -633,35 +641,42 @@ public class BorneGraphique extends JFrame {
 
     private void boutonValider_actionPerformed(ActionEvent e) {
     
+    	boolean statValide = laBorne.verifierEmplacement(code);
+    	if(! statValide)
+    	{
+        	this.champMessage.setText("Code de stationnement invalide!");
+    		
+    	}
     }
 
-    private void boutonOK_actionPerformed(ActionEvent e) {
-     
-     
+   // private void boutonOK_actionPerformed(ActionEvent e) {
+   //  String Recu = laBorne.faireTransaction();
+   //  zoneRecu.setText(Recu);
       
       
-    }
+    //}
 
-  private void boutonEncaisser_actionPerformed(ActionEvent e)
-  {
-   
-  }
+ // private void boutonEncaisser_actionPerformed(ActionEvent e)
+//  {
+  // double argentTotal = laBorne.encaisser();
+  // this.champMessage.setText(" voici le total de la journée");
+ // }
   // pour le changement de zones
   private void itemZone1_actionPerformed(ActionEvent e)
   {
-   
+	  laBorne.setZone(1);
   }
   private void itemZone2_actionPerformed(ActionEvent e)
   {
-   
+	   laBorne.setZone(2);   
   }
   private void itemZone3_actionPerformed(ActionEvent e)
   {
-   
+	   laBorne.setZone(3);
   }
   private void itemZone4_actionPerformed(ActionEvent e)
   {
-   
+	   laBorne.setZone(4);
   }
   public static void main ( String [] args ) {
       BorneGraphique b = new BorneGraphique();

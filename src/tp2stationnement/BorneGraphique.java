@@ -1,4 +1,3 @@
-
 package tp2stationnement;
 import java.awt.Color;
 import java.awt.Component;
@@ -102,6 +101,11 @@ public class BorneGraphique extends JFrame {
 
     public BorneGraphique() {
       // initialiser la borne
+    	laBorne = new Borne(1);
+    	this.code = "";
+    	
+    			
+    	
         try {
             jbInit();
         } catch (Exception e) {
@@ -516,17 +520,21 @@ public class BorneGraphique extends JFrame {
    
 
     private void bouton25_actionPerformed(ActionEvent e) {
-        //à coder
-        
+    	 Piece unePiece = new Piece(0.25);
+      	this.champMessage.setText(this.laBorne.ajouterMonnaie(unePiece));
+    	;
+  
     }
 
     private void bouton100_actionPerformed(ActionEvent e) {
-        //à coder
+    	 Piece unePiece = new Piece(1.00);
+      	this.champMessage.setText(this.laBorne.ajouterMonnaie(unePiece));
    
     }
 
     private void bouton200_actionPerformed(ActionEvent e) {
-        //à coder
+    	 Piece unePiece = new Piece(2.00);
+     	this.champMessage.setText(this.laBorne.ajouterMonnaie(unePiece));
 
     }
 
@@ -548,59 +556,75 @@ public class BorneGraphique extends JFrame {
     }
 
     private void boutonA_actionPerformed(ActionEvent e) {
+    	
+    	this.code  += "A";
+    	this.champMessage.setText(this.code);
       
     }
 
     private void boutonB_actionPerformed(ActionEvent e) {
-    	  
+    	this.code  += "B";
+    	this.champMessage.setText(this.code);
     }
 
     private void boutonC_actionPerformed(ActionEvent e) {
-       
+    	this.code  += "C";
+    	this.champMessage.setText(this.code);
     }
 
     private void boutonD_actionPerformed(ActionEvent e) {
-      
+    	this.code  += "D";
+    	this.champMessage.setText(this.code);
     }
 
     private void bouton0_actionPerformed(ActionEvent e) {
-       
+    	this.code  += "0";
+    	this.champMessage.setText(this.code);
     }
 
     private void bouton1_actionPerformed(ActionEvent e) {
-       
+    	this.code  += "1";
+    	this.champMessage.setText(this.code);
     }
 
     private void bouton2_actionPerformed(ActionEvent e) {
-       
+    	this.code  += "2";
+    	this.champMessage.setText(this.code);
     }
 
     private void bouton3_actionPerformed(ActionEvent e) {
-       
+    	this.code  += "3";
+    	this.champMessage.setText(this.code);
     }
 
     private void bouton4_actionPerformed(ActionEvent e) {
-       
+    	this.code  += "4";
+    	this.champMessage.setText(this.code);
     }
 
     private void bouton5_actionPerformed(ActionEvent e) {
-      
+    	this.code  += "5";
+    	this.champMessage.setText(this.code);
     }
 
     private void bouton6_actionPerformed(ActionEvent e) {
-    
+    	this.code  += "6";
+    	this.champMessage.setText(this.code);
     }
 
     private void bouton7_actionPerformed(ActionEvent e) {
-       
+    	this.code  += "7";
+    	this.champMessage.setText(this.code);
     }
 
     private void bouton8_actionPerformed(ActionEvent e) {
-      
+    	this.code  += "8";
+    	this.champMessage.setText(this.code);
     }
 
     private void bouton9_actionPerformed(ActionEvent e) {
-       
+    	this.code  += "9";
+    	this.champMessage.setText(this.code);
     }
 
     private void boutonValider_actionPerformed(ActionEvent e) {

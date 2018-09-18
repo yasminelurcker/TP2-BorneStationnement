@@ -9,8 +9,7 @@ public class Piece {
 			this.valeur = montant;
 		
 	}
-
 	public double getValeur() {
-		return valeur;
-	}
+		return this.valeur;
 }
+	}

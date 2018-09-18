@@ -1,91 +1,147 @@
 package tp2stationnement;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+public class Borne {
+	package tp2stationnement;
 
-	public class Borne {
+	import java.util.Calendar;
+	import java.util.GregorianCalendar;
+	import java.util.Date;
+	import java.text.SimpleDateFormat;
+	import java.text.ParseException;
 
-		private int zone;
-		private double totalArgent;
-		private boolean stationnementPayant;
-		private GregorianCalendar date ;
-		private double chuteComptant;
-		private double MAX_MONTANT; 
+		public class Borne {
+
 		
+			private double zone; 					// tarif allouï¿½ ï¿½ la zone de la borne en question
+			private double totalArgent; 			// variable permettant de calculer le total des transactions de la journï¿½e pour l'encaisse
+			private boolean stationnementPayant; 	// valide si le stationnement au moment prï¿½cis est payant
+			private Transaction transactionEnCours;
+			private double paiementEnCours;
+			private GregorianCalendar date ;
+			
+			
+			
+		public Borne (int zone, GregorianCalendar horaire) {
 		
-	public Borne (int zone, GregorianCalendar [][] horaire) {
-	
-				this.zone = zone;
-				this.MAX_MONTANT = 6.00;
-				
+					this.zone = zone;
+				}
+		
+		public void tarifParZone(String nuZone)		// tarif par heure dï¿½terminï¿½ en fonction de la zone du stationnement 
+		
+		{
+			switch(nuZone)							// les zones Z1 ï¿½ Z4 n'ont pas le mï¿½me tarif
+			{
+				case "Zone1": this.zone = 3.00;
+					break;
+				case "Zone2": this.zone = 2.50;
+					break;
+				case "Zone3": this.zone = 2.00;
+					break;
+				case "Zone4": this.zone = 1.50;
+					break;
 			}
-	public void verifierHeure() {
+		}
+
+		public void verifierHeure() {
 			GregorianCalendar date = new GregorianCalendar();
 	 
 			if(date.get(Calendar.DAY_OF_WEEK )== 1)
-				if (date.get(Calendar.HOUR_OF_DAY) <13 || date.get(Calendar.HOUR_OF_DAY)>18);
+				if (date.get(Calendar.HOUR_OF_DAY) <13 ||	// le dimanche entre 13 et 18h 
+					date.get(Calendar.HOUR_OF_DAY)>18);
 						stationnementPayant = false;
-	
+
 						
-			if(date.get(Calendar.DAY_OF_WEEK )== 2||
-					date.get(Calendar.DAY_OF_WEEK )== 3||
-					date.get(Calendar.DAY_OF_WEEK )== 4||
-					date.get(Calendar.DAY_OF_WEEK )== 5||
-					date.get(Calendar.DAY_OF_WEEK )== 6)
+			if(date.get(Calendar.DAY_OF_WEEK )==2||			// du lundi au vendredi entre 9 et 21h
+					date.get(Calendar.DAY_OF_WEEK )== 3||	
+					date.get(Calendar.DAY_OF_WEEK )== 4||	
+					date.get(Calendar.DAY_OF_WEEK )== 5||	
+					date.get(Calendar.DAY_OF_WEEK )== 6)	
 						stationnementPayant = false;
-				if (date.get(Calendar.HOUR_OF_DAY) <9|| date.get(Calendar.HOUR_OF_DAY)>21);
+				if (date.get(Calendar.HOUR_OF_DAY) <9|| 	
+					date.get(Calendar.HOUR_OF_DAY)>21);
 						stationnementPayant = false;			
-	
+
 						
-			if(date.get(Calendar.DAY_OF_WEEK )== 7)
-				if (date.get(Calendar.HOUR_OF_DAY) <9|| date.get(Calendar.HOUR_OF_DAY)>18);
+			if(date.get(Calendar.DAY_OF_WEEK )== 7)			// le samedi entre 9 et 18h
+				if (date.get(Calendar.HOUR_OF_DAY) <9|| 
+					date.get(Calendar.HOUR_OF_DAY)>18);
 						stationnementPayant = false;
+	}
+		
+		public boolean verifierEmplacement (String emplacement)
+		{
+			if(emplacement.matches("[A-Z][0-9]{3}"))		// expression rï¿½guliï¿½re validant le numï¿½ro du stationnement 
+			{
+				this.transactionEnCours = new Transaction(emplacement);
+				return true;
+			}
+			else 
+				return false;
+		}
+
+		public void ajouterMonnaie(Piece valeur) {
+			
+			double paiementEnCours = 0.00;
+			double paiementMaximum = 6.00;
+			
+			if (paiementEnCours <paiementMaximum)
+			{
+			double montant = valeur.getValeur();
+				if (valeur.getValeur() == 0.25)
+				  this.paiementEnCours =+ 0.25;
+				if (valeur.getValeur() == 1.00)
+					  this.paiementEnCours =+ 1.00;  
+				if (valeur.getValeur() == 2.00)
+					  this.paiementEnCours =+ 2.00;
+			}
+			
+			
+				
+			
+			
+		}
+		}
+		
+		
+		
+		
+		
+
+	/*
+		public boolean PaiementValide("$$$") { 
+			return true; 
+			
+		
+		}
+		
+		public boolean PaiementValide(CarteDeCredit) { 
+			return true; 
+			
+		
+		}
+		// Reï¿½oit le paiement crï¿½dit
+		// reï¿½oit le paiement cash
+		//imprime la facture
+			
+			
+			
+		}
+		// Valide le paiement
+		
+	// Imprime la facture
+	// append('' all...\n + )
+	// transaction.gettypepaiement +
+		
+		//vï¿½rifie si en fct
+				
+				
+			;
+		
+		
+	*/
+		
+		
+
+		
 
 }
-	
-	public boolean EmplacementValide(String emplacement) {
-		// Validation de l'emplacement
-		
-		
-		return true;
-	}
-
-	public boolean PaiementValide("$$$") { 
-		return true; 
-		
-	
-	}
-	
-	
-	public double getChuteComptant() {
-		return chuteComptant;
-	}
-	public boolean insererComptant(Piece pieceCourante) {
-		
-		if ((pieceCourante.getValeur() + this.chuteComptant) > this.MAX_MONTANT) {
-			return false;
-		}
-		else
-			this.chuteComptant = chuteComptant + pieceCourante.getValeur();
-	}
-	public boolean CarteValide(CarteDeCredit carteCourante) {
-	
-		if (carteCourante.expiration.after( new GregorianCalendar())) {
-			return true;
-		}
-		return false;
-	}
-	// Reçoit le paiement crédit
-	// reçoit le paiement cash
-	//imprime la facture
-		
-		
-		
-	}
-	// Valide le paiement
-	
-// Imprime la facture
-// append('' all...\n + )
-// transaction.gettypepaiement +
-	
-

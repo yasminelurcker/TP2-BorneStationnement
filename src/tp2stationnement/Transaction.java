@@ -6,25 +6,28 @@ import java.util.GregorianCalendar;
 	public class Transaction {
 	
 		// variables
-		
 		private double montant;
 		private boolean carte;
-		private boolean valide;
+		//private boolean valide;
 		private String emplacement;
-		
 		GregorianCalendar heureDebut;
 		GregorianCalendar heureFin;
+		
+		
 		GregorianCalendar today = new GregorianCalendar();	
 			
 	
-		// constructeur
-		
+		/*/ constructeur
 		public Transaction( GregorianCalendar heureDebut, String emplacement, boolean carte) {
 			
 				this.emplacement = emplacement;
 				this.heureDebut = heureDebut;
 				this.paiement(carte);	
-				}
+				}*/
+		
+		public Transaction(String emplacement) {
+			this.emplacement = emplacement;
+		}
 		
 		public void paiement(boolean carte) {
 				
@@ -40,9 +43,13 @@ import java.util.GregorianCalendar;
 				else {
 					// Paiment en pièces
 					
-				}	
+				}
 			}
+		
+		
+		
 		}	
+	
 				
 
 

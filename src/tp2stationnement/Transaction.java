@@ -7,26 +7,21 @@ import java.util.GregorianCalendar;
 	
 		// variables
 		private double montant;
+		private double prixTransaction;
 		private boolean carte;
 		private String emplacement;
 		private int nMinutes;
-		GregorianCalendar heureDebut;
-		GregorianCalendar heureFin;
-		
-		
-		GregorianCalendar today = new GregorianCalendar();
+		private String heureDebut;
+		private String heureFin;
 		private boolean valide;	
-			
-	
 
-		
+		GregorianCalendar today = new GregorianCalendar();
+
 		public Transaction(String emplacement) {
 			this.emplacement = emplacement;
 			this.nMinutes = 0;
 			this.montant = 0;
-			
 		}
-		
 		public void paiement(boolean carte) {
 				
 			if (carte) {
@@ -36,7 +31,7 @@ import java.util.GregorianCalendar;
 				CarteDeCredit carteCourante = new CarteDeCredit(numeroCarte, expiration);
 					
 				this.valide = today.before(carteCourante.expiration);
-							
+		
 				}
 				else {
 					
@@ -50,6 +45,9 @@ import java.util.GregorianCalendar;
 
 		public void setMontant(double montant) {
 			this.montant = montant;
+		}
+		public double getPrixTransaction() {
+			return prixTransaction;
 		}
 
 		public boolean isCarte() {
@@ -76,20 +74,20 @@ import java.util.GregorianCalendar;
 			this.nMinutes = nMinutes;
 		}
 
-		public GregorianCalendar getHeureDebut() {
+		public String getHeureDebut() {
 			return heureDebut;
 		}
 
-		public void setHeureDebut(GregorianCalendar heureDebut) {
-			this.heureDebut = heureDebut;
+		public void setHeureDebut(String heureDebut2) {
+			this.heureDebut = heureDebut2;
 		}
 
-		public GregorianCalendar getHeureFin() {
+		public String getHeureFin() {
 			return heureFin;
 		}
 
-		public void setHeureFin(GregorianCalendar heureFin) {
-			this.heureFin = heureFin;
+		public void setHeureFin(String tempsEcoule) {
+			this.heureFin = tempsEcoule;
 		}
 
 		public GregorianCalendar getToday() {

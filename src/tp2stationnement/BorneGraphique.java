@@ -95,19 +95,14 @@ public class BorneGraphique extends JFrame {
     
     // Déclaration des variables provenant de votre modèle ( objets )
     private Borne laBorne;
-    //vaut null pour l'instant
-    
-    private String code;
-  
-    
+    private String code = "";
 
     public BorneGraphique() {
       // initialiser la borne
     	laBorne = new Borne(1);
     	this.code = "";
-    	
-    			
-    	
+		champMessage.setText("Bonjour, veuillez entrez le code");
+
         try {
             jbInit();
         } catch (Exception e) {
@@ -409,7 +404,7 @@ public class BorneGraphique extends JFrame {
         boutonOK.setFont ( tag);
         boutonOK.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        boutonOK_actionPerformed(e);
+                    	boutonOK_actionPerformed(e);
                     }
                 });
         zoneRecu.setBounds(new Rectangle(75, 660, 725, 155));
@@ -564,7 +559,7 @@ public class BorneGraphique extends JFrame {
 
     private void boutonMaxCredit_actionPerformed(ActionEvent e) {
 
-    //Piece unePiece = new Piece((laBorne.CalculerTarif(120)*100));
+    	Piece unePiece = new Piece((laBorne.CalculerTarif(120)*100));
     	this.champMessage.setText(this.laBorne.traiterCarte(this.laBorne.carteCourante));
 
     	
@@ -645,11 +640,16 @@ public class BorneGraphique extends JFrame {
     private void boutonValider_actionPerformed(ActionEvent e) {
     
     	boolean statValide = laBorne.verifierEmplacement(code);
+    	this.code = "";
     	if(! statValide)
     	{
         	this.champMessage.setText("Code de stationnement invalide!");
-    		
     	}
+    	else
+    	{
+    		this.champMessage.setText("Veuillez entrer le montant");
+    	}
+    	
     }
 
    // private void boutonOK_actionPerformed(ActionEvent e) {
@@ -659,11 +659,12 @@ public class BorneGraphique extends JFrame {
       
     //}
 
- // private void boutonEncaisser_actionPerformed(ActionEvent e)
-//  {
-  // double argentTotal = laBorne.encaisser();
-  // this.champMessage.setText(" voici le total de la journée");
- // }
+ private void boutonEncaisser_actionPerformed(ActionEvent e)
+{
+	 DecimalFormat df = new DecimalFormat("0.00 $");
+   double argentTotal = laBorne.encaisser();
+  this.champMessage.setText(" voici le total de la journée : " + df.format(this.laBorne.encaisser()));
+ }
   // pour le changement de zones
   private void itemZone1_actionPerformed(ActionEvent e)
   {

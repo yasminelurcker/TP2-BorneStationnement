@@ -4,15 +4,16 @@ import java.util.GregorianCalendar;
 public class CarteDeCredit {
 
 	private String numeroCarte;
-	GregorianCalendar expiration;
+	private String expiration;
+	private boolean expValide;
 
-public CarteDeCredit(String numeroCarte, GregorianCalendar expiration) {
+public CarteDeCredit(String numeroCarte, String expiration) {
 	
 	if(numeroCarte.length() == 16)
 	{
 		this.numeroCarte = numeroCarte;
 		this.expiration = expiration;
-		
+		expValide = false;
 	}
 	
 	}
@@ -22,9 +23,12 @@ public String getNumeroCarte() {
 }
 
 
-public GregorianCalendar getExpiration() {
+public String getExpiration() {
 	return expiration;
 }
-
+public void setDateExpValide(boolean expValide)
+{
+	this.expValide = expValide;
+}
 }
 
